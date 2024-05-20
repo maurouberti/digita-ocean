@@ -1,6 +1,5 @@
 resource "digitalocean_domain" "domain_exemplo" {
-  name       = var.domain
-  ip_address = data.kubernetes_service.data_service_nginx.status.0.load_balancer.0.ingress.0.ip
+  name = var.domain
 }
 
 resource "digitalocean_record" "CNAME_exemplo" {

@@ -1,8 +1,9 @@
 module "module_exemplo" {
   source       = "./infra"
+  nome         = "teste"
   do_token     = file("./tokens/digital_ocean_api_token")
   ssh_key      = file("./tokens/tf-digitalocean-exemplo.pub")
-  domain       = "sane-maquiagem.com.br"
+  domain       = "teste.sane-maquiagem.com.br"
   droplet_size = "s-2vcpu-2gb"
   region       = "nyc3"
 }

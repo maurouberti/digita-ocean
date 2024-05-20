@@ -1,3 +1,7 @@
+variable "nome" {
+  type = string
+}
+
 variable "do_token" {
   type = string
 }

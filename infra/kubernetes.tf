@@ -3,18 +3,18 @@ data "digitalocean_kubernetes_versions" "k8s_versions_exemplo" {
 }
 
 resource "digitalocean_kubernetes_cluster" "k8s_cluster_exemplo" {
-  name    = "cluster-exemplo"
+  name    = "cluster-${var.nome}"
   region  = var.region
   version = data.digitalocean_kubernetes_versions.k8s_versions_exemplo.latest_version
-  tags    = ["cluster-exemplo", "kubernetes-cluster"]
+  tags    = ["cluster", "k8s"]
 
   node_pool {
-    name       = "node-exemplo"
+    name       = "node-${var.nome}"
     size       = var.droplet_size
     auto_scale = true
     min_nodes  = 1
     max_nodes  = 3
-    tags       = ["kubernetes", "k8s"]
+    tags       = ["node", "k8s"]
   }
 }
 
@@ -28,4 +28,5 @@ provider "kubernetes" {
   cluster_ca_certificate = base64decode(
     data.digitalocean_kubernetes_cluster.data_k8s_cluster_exemplo.kube_config[0].cluster_ca_certificate
   )
+  #   config_path = "~/.kube/config"
 }

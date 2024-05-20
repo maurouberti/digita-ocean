@@ -5,3 +5,35 @@
 # DigitalOcean
 
 Terraform na DigitalOcean provisionando um cluster Kubernetes.
+
+## Criar INFRA
+
+### ssh
+
+```
+$ ssh-keygen -t rsa -C "maurouberti@hotmail.com" -f ./tokens/tf-digitalocean-exemplo
+```
+
+### terraform
+
+```
+$ terraform init
+$ terraform apply
+```
+
+### usar **kubectl**
+
+Caso o arquivo `~/.kube/config` não tenha sido criado na pasta do usuário, copiar ele na pasta do usuario para funcionar os comandos kubectl no **cluster**.
+
+```
+$ kubectl config get-clusters
+```
+
+## Excluir INFRA
+
+```
+$ terraform destroy
+$ rm -f ./tokens/tf-digitalocean-exemplo ./tokens/tf-digitalocean-exemplo.pub
+$ rm ~/.kube/config
+$ rm -rf .terraform && rm terraform.tfstate && rm .terraform.lock.hcl
+```
