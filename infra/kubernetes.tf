@@ -28,5 +28,5 @@ provider "kubernetes" {
   cluster_ca_certificate = base64decode(
     data.digitalocean_kubernetes_cluster.data_k8s_cluster_exemplo.kube_config[0].cluster_ca_certificate
   )
-  #   config_path = "~/.kube/config"
+  config_path = "${pathexpand("~")}/.kube/config"
 }
